@@ -1,0 +1,74 @@
+/BNF Notations/
+<char> ::= A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z  
+<digit> ::= 0|1|2|3|4|5|6|7|8|9
+<sign> ::= + | -
+<var> ::= <char><var_suffix>
+<var_suffix> ::= <var_suffix><digit>|<var_suffix><char>|<char>|<digit>
+<unsigned_int>::= <digit><unsigned_int>|<digit>
+<integer> ::= <sign><unsigned_int> | <unsigned_int>
+<op_assign>::= =
+<op_add> ::= +
+<op_sub>::= -
+<op_mul> ::= *
+<op_div> ::= /
+<op_mod> ::= %
+<op_expo> ::= **
+<op_eq> ::= ==
+<op_le> ::= <=
+<op_ge> ::= >=
+<op_lt> ::= <
+<op_gt> ::= >
+<op_and> ::= &&
+<op_or> ::= ||
+<rp> ::= )
+<lp> ::= (
+<end_stmt> ::= ;
+<op_addsub> ::= <op_add> | <op_sub>
+<op_muldiv> ::= <op_mul> | <op_div>
+<op_logical> ::= <op_and> | <op_or>
+/* Operation precedence "()"="*">"%">""="/">"+"="-"   all the equalities have left associations */
+<op_arithmetic> ::= <op_addsub> | <op_muldiv>
+<term> ::= <var> | <integer>
+<expo_term> ::= <expo_term> <op_expo> <term> | <lp> <arithmetic_expr> <rp> | <term>
+<mod_term> ::= <mod_term> <op_mod> <expo_term> | <expo_term>
+<factor> ::= <factor> <op_muldiv> <mod_term> |<mod_term> 
+<arithmetic_expr> ::=<arithmetic_expr> <op_addsub> <factor> | <factor>
+<assign_stmt> ::= <var> <op_assign> <arithmetic_expr>
+<op_compare> ::= <op_gt> | <op_lt> | <op_le> | <op_ge>
+<compare> ::= <compare> <op_compare> <term> | <term>
+<logical_expr> ::= <logical_expr> <op_logical> <compare> | <compare>
+<program> ::= <stmt_list>
+<stmt_list> ::= <stmt_list><stmt><end_stmt>|<stmt><end_stmt>
+<stmt> ::= <assign_stmt>
+        | <if_else_stmt>
+        | <single_if_stmt>
+        | <loop_stmt>
+        | <funct_stmt>
+<while> ::= while
+<openBrace> ::= {
+<closeBrace> ::= }
+<while_stmt>::= <while> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
+while (i<5) {
+    stmt_list
+}
+<IF> ::= if
+<ELSE> ::= else 
+<if_stmt> ::= <IF> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
+            | <IF> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace> <ELSE> <openBrace> <stmt_list> <closeBrace>
+        
+<inSymbol> ::= >>
+<outSymbol> ::= <<
+<cout>::= cout
+<cin> ::= cin
+<string> ::= <char> <string> | <digit> <string> | " " <string> 
+<string_literal> ::= "\"" <string> "\""
+
+
+<input_stmt> ::= <cin> <inSymbol> <var>  <end_stmt> # cin >> 4 ; 
+<output_expr> ::= <output_contents> | <output_contents> <output_expr>
+<output_contents> ::= <logical_expr> | <string_literal> 
+<output_stmt> ::= <cout> <outSymbol> <output_expr> <end_stmt>
+
+
+
+
