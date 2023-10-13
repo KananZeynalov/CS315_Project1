@@ -48,9 +48,7 @@
 <openBrace> ::= {
 <closeBrace> ::= }
 <while_stmt>::= <while> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
-while (i<5) {
-    stmt_list
-}
+
 <if> ::= if
 <else> ::= else 
 <if_stmt> ::= <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
