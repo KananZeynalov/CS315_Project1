@@ -51,10 +51,10 @@
 while (i<5) {
     stmt_list
 }
-<IF> ::= if
-<ELSE> ::= else 
-<if_stmt> ::= <IF> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
-            | <IF> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace> <ELSE> <openBrace> <stmt_list> <closeBrace>
+<if> ::= if
+<else> ::= else 
+<if_stmt> ::= <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
+            | <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace> <else> <openBrace> <stmt_list> <closeBrace>
         
 <inSymbol> ::= >>
 <outSymbol> ::= <<
