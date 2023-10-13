@@ -28,7 +28,7 @@
 <op_logical> ::= <op_and> | <op_or>
 /* Operation precedence "()"="*">"%">""="/">"+"="-"   all the equalities have left associations */
 <op_arithmetic> ::= <op_addsub> | <op_muldiv>
-<term> ::= <var> | <integer>
+<term> ::= <var> | <integer> | <function_calling>
 <expo_term> ::= <expo_term> <op_expo> <term> | <lp> <arithmetic_expr> <rp> | <term>
 <mod_term> ::= <mod_term> <op_mod> <expo_term> | <expo_term>
 <factor> ::= <factor> <op_muldiv> <mod_term> |<mod_term> 
@@ -40,10 +40,11 @@
 <program> ::= <stmt_list>
 <stmt_list> ::= <stmt_list><stmt><end_stmt>|<stmt><end_stmt>
 <stmt> ::= <assign_stmt>
-        | <if_else_stmt>
-        | <single_if_stmt>
+        | <if_stmt>  # should be changed 
         | <loop_stmt>
-        | <funct_stmt>
+        | <funct_tmt>
+        | <while_stmt>
+        | <return_stmt>
 <while> ::= while
 <openBrace> ::= {
 <closeBrace> ::= }
@@ -53,7 +54,6 @@
 <else> ::= else 
 <if_stmt> ::= <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
             | <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace> <else> <openBrace> <stmt_list> <closeBrace>
-        
 <inSymbol> ::= >>
 <outSymbol> ::= <<
 <cout>::= cout
@@ -79,3 +79,12 @@
 <comment_text>::= <string>
 <comment_init> ::= # 
 <nl> ::= \n
+
+<return_stmt> ::= "return" <arithmetic_expr> 
+<in_func_stmt_list> ::= <stmt_list><return_stmt> <end_stmt>| <return_stmt><end_stmt>
+<type>::= "int" | "int[]"
+<function_name> ::= <var>
+<param_list>::= <type> <var> | <type> <var> , <param_list>
+<function_declaration> ::=  "function" <function_name> < lp > < param_list> < rp> <openBrace> <in_func_stmt_list> <closeBrace>
+
+<function_calling> ::= <function_name> <lp> <param_list> <rp>
