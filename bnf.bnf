@@ -66,7 +66,16 @@
 <output_expr> ::= <output_contents> | <output_contents> <output_expr>
 <output_contents> ::= <logical_expr> | <string_literal> 
 <output_stmt> ::= <cout> <outSymbol> <output_expr> <end_stmt>
-
-
-
-
+<sb_open>::= [
+<sb_close> ::= ]
+<list_items> ::=  <list_items>,int| int # 1,2,3,4,5,7,9
+<list> ::= <sb_open> list_items <sb_close> # [1,2,4,7,8]
+<list_assignment> ::= <var><sb_open><integer><sb_close><op_assign> <list> #arr[3] = [11,13,03]
+<array_properties> ::= .assign<lp><integer>,<integer><rp>
+    |.get<lp><integer><rp>
+    |.length<lp><rp>
+<array_expr> ::= <var>.<array_properties>
+<comment>:: = <comment_init> <comment_text> <nl>
+<comment_text>::= <string>
+<comment_init> ::= # 
+<nl> ::= \n
