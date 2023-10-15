@@ -1,0 +1,51 @@
+#"1. define a function foo that has two parameters p and q, 
+   and displays its name, the names and the values of the parameters, then
+   it returns the largest of the parameters.
+#"2. for each value of a in the list of {5, 0, 3, -7} // assuming your data structure has such a syntax
+#"2.1.   for each value of b in the list of {9, -2, -1}
+#"2.1.1.    c gets foo(a, b)
+#"2.1.2     display the values of a, b and c
+
+
+func main(){
+
+     a[4] = [5, 0, 3, -7];
+     b[3] = [9, -2, -1];
+     size = 4; 
+     size2 = 3;
+     index1 = 0;
+     index2 = 0;
+
+
+    while(size > index){
+        while(size2 > index2){
+
+            temp1 = a.get(index1);
+            temp2 = b.get(index2);
+            c = foo(a, b);
+            cout << temp1 <<;
+            cout << temp2 <<;
+            cout << c <<;
+            index = index + 1;
+        }
+        index1 = index1 + 1;
+        index2 = 0;
+    }
+}
+
+func foo(int p, int q){
+
+    cout << "Function Name: foo";
+    cout << "Parameter p: ";
+    cout << p <<;
+    cout << "Parameter q: ";
+    cout << q <<;
+
+    if(p > q) {
+        return p;
+    }
+    else{
+        return q;
+    }
+
+}
