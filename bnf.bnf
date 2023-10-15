@@ -41,7 +41,6 @@
 <stmt_list> ::= <stmt_list><stmt><end_stmt>|<stmt><end_stmt>
 <stmt> ::= <assign_stmt>
         | <if_stmt>  # should be changed 
-        | <loop_stmt>
         | <funct_tmt>
         | <while_stmt>
         | <return_stmt>
@@ -90,6 +89,13 @@
 <main_declaration>::= function main<lp><rp><openBrace><stmt_list><return_stmt><end_stmt><closeBrace>
 <function_calling_stmt> ::= <function_name> <lp> <param_list> <rp>
 <function_list>::= <function_declaration> <function_list> | <main_declaration>
+
+
+
+
+
+
+
 ### the real part temize çekilmiş hali ###
 <program>::= <function_list>
 <function_list>::= <function_declaration> <function_list> | <main_declaration>
@@ -98,10 +104,89 @@
 <stmt_list> ::= <stmt_list><stmt><end_stmt>|<stmt><end_stmt>
 <stmt> ::= <assign_stmt>
         | <if_stmt>  # should be changed 
-        | <loop_stmt>
-        | <funct_tmt>
+        | <function_calling_stmt>
         | <while_stmt>
+        | <input_stmt>
+        | <output_stmt>
         | <return_stmt>
         | <comment_stmt>
         | <function_calling_stmt>
 
+<return_stmt> ::= return <arithmetic_expr> 
+
+<comment_stmt>:: = <comment_init> <comment_text>
+<comment_text>::= <string>
+<comment_init> ::= # 
+
+<function_calling_stmt> ::= <function_name> <lp> <param_list> <rp>
+<type>::= int | int[]
+<function_name> ::= <var>
+<param_list>::= <type> <var> | <type> <var> , <param_list>
+
+<while> ::= while
+<openBrace> ::= {
+<closeBrace> ::= }
+<while_stmt>::= <while> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
+
+<if_stmt> ::= <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
+            | <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace> <else> <openBrace> <stmt_list> <closeBrace>
+<if> ::= if
+<else> ::= else 
+<logical_expr> ::= <logical_expr> <op_logical> <compare> | <compare>
+
+<output_stmt> ::= <cout> <outSymbol> <arithmetic_expr>
+                    |<cout> <outSymbol> <string>
+<input_stmt> ::= <cin><inSymbol><var>
+<inSymbol> ::= >>
+<outSymbol> ::= <<
+<cout>::= cout
+<cin> ::= cin
+<string> ::= <char> <string> | <digit> <string> | " " <string> 
+<string_literal> ::= "\"" <string> "\""
+
+<array_expr> ::= <var>.<array_properties>
+<array_properties> ::= .assign<lp><integer>,<integer><rp>
+    |.length<lp><rp>
+    |.get<lp><integer><rp>
+<list_assignment> ::= <var><sb_open><integer><sb_close><op_assign> <list> #arr[3] = [11,13,03]
+<list> ::= <sb_open> list_items <sb_close> # [1,2,4,7,8]
+<list_items> ::=  <list_items>,int| int # 1,2,3,4,5,7,9
+<sb_open>::= [
+<sb_close> ::= ]
+
+<assign_stmt> ::= <var> <op_assign> <arithmetic_expr>
+<arithmetic_expr> ::=<arithmetic_expr> <op_addsub> <factor> | <factor>
+<factor> ::= <factor> <op_muldiv> <mod_term> |<mod_term> 
+<mod_term> ::= <mod_term> <op_mod> <expo_term> | <expo_term>
+<expo_term> ::= <expo_term> <op_expo> <term> | <lp> <arithmetic_expr> <rp> | <term>
+<term> ::= <var> | <integer> | <function_calling>
+
+<op_logical> ::= <op_and> | <op_or>
+<op_arithmetic> ::= <op_addsub> | <op_muldiv>
+<op_muldiv> ::= <op_mul> | <op_div>
+<op_addsub> ::= <op_add> | <op_sub>
+<op_assign>::= =
+<op_add> ::= +
+<op_sub>::= -
+<op_mul> ::= *
+<op_div> ::= /
+<op_mod> ::= %
+<op_expo> ::= **
+<op_eq> ::= ==
+<op_le> ::= <=
+<op_ge> ::= >=
+<op_lt> ::= <
+<op_gt> ::= >
+<op_and> ::= &&
+<op_or> ::= ||
+<rp> ::= )
+<lp> ::= (
+<end_stmt> ::= ;
+
+<var> ::= <char><var_suffix>
+<var_suffix> ::= <var_suffix><digit>|<var_suffix><char>|<char>|<digit>
+<unsigned_int>::= <digit><unsigned_int>|<digit>
+<integer> ::= <sign><unsigned_int> | <unsigned_int>
+<sign> ::= + | -
+<digit> ::= 0|1|2|3|4|5|6|7|8|9
+<char> ::= A | B | C | D | E | F | G | H | I | J | K | L | M | N | O | P | Q | R | S | T | U | V | W | X | Y | Z | a | b | c | d | e | f | g | h | i | j | k | l | m | n | o | p | q | r | s | t | u | v | w | x | y | z  
