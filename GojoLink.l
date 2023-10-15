@@ -25,7 +25,7 @@ length              {printf("%s","ARR_LENGTH");}
 get                 {printf("%s","ARR_GET");}
 OP_ASSIGN           {printf("%s", "ARR_ASSIGN ");}
 main			{printf("%s","MAIN ");} /*starting of the program. Inside this function will be executed just like C*/
-function		{printf("%s", "FUNCTION ");} /*function declaration start token*/
+func		{printf("%s", "FUNCTION ");} /*function declaration start token*/
 return			{printf("%s", "RETURN ");} /*Return token for function return stmt */
 cout			{printf("%s","OUTPUT ");}
 \>\>            {printf("%s","OP_INPUT");}
