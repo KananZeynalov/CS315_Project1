@@ -21,7 +21,8 @@
 <comment_text>::= <string>
 <comment_init> ::= # 
 
-<function_calling_stmt> ::= <function_name> <lp> <param_list> <rp>
+<function_calling_stmt> ::= <function_name> <lp> <var_list> <rp>| <function_name> <lp> <rp>
+<var_list> ::= <arithmetic_expr>,<var_list>|<var>[],<var_list>|<arithmetic_expr>|<var>[]
 <type>::= int | int[]
 <function_name> ::= <var>
 <param_list>::= <type> <var> | <type> <var> , <param_list>
