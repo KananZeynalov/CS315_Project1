@@ -45,6 +45,7 @@
         | <funct_tmt>
         | <while_stmt>
         | <return_stmt>
+        | <comment_stmt>
 <while> ::= while
 <openBrace> ::= {
 <closeBrace> ::= }
@@ -78,14 +79,15 @@
 <comment>:: = <comment_init> <comment_text> <nl>
 <comment_text>::= <string>
 <comment_init> ::= # 
+<comment_stmt> ::= <comment_init><string><nl>
 <nl> ::= \n
 
-<return_stmt> ::= "return" <arithmetic_expr> 
+<return_stmt> ::= return <arithmetic_expr> 
 <in_func_stmt_list> ::= <stmt_list><return_stmt> <end_stmt>| <return_stmt><end_stmt>
 <type>::= "int" | "int[]"
 <function_name> ::= <var>
 <param_list>::= <type> <var> | <type> <var> , <param_list>
-<function_declaration> ::=  "function" <function_name> < lp > < param_list> < rp> <openBrace> <in_func_stmt_list> <closeBrace>
+<function_declaration> ::=  function <function_name> < lp > < param_list> < rp> <openBrace> <in_func_stmt_list> <closeBrace>
 
 <function_calling> ::= <function_name> <lp> <param_list> <rp>
 ###

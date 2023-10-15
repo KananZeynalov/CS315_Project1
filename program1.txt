@@ -1,0 +1,17 @@
+#"1. prompt the user to enter the values of x, y z" 
+#"2. read the value of x, y and z from the keyboard"
+#"3. if any of them is zero, ask the user to enter only non-zero values"
+#"4. keep reading new values until proper values are entered."
+#"5. display the value of the expression (x times y times z)"
+func main(){
+    int x = 0;#"variables must be initialized"
+    int y = 0;
+    int z = 0;
+    cout<<"Enter the value of x, y and z"; #"inputs will be read"
+    cin>>x;
+    cin>>y;
+    cin>>z;
+    while(x>0 || y>0 || z>0){ #"loop statement"
+        cout<< x*y*z
+    }
+}
