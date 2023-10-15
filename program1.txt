@@ -4,9 +4,9 @@
 #"4. keep reading new values until proper values are entered."
 #"5. display the value of the expression (x times y times z)"
 func main(){
-    int x = 0;#"variables must be initialized"
-    int y = 0;
-    int z = 0;
+    x = 0;#"variables must be initialized"
+    y = 0;
+    z = 0;
     cout<<"Enter the value of x, y and z"; #"inputs will be read"
     cin>>x;
     cin>>y;

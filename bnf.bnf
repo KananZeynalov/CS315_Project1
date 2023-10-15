@@ -13,6 +13,7 @@
         | <return_stmt>
         | <comment_stmt>
         | <function_calling_stmt>
+        | <array_stmt>
 
 <return_stmt> ::= return <arithmetic_expr> 
 
@@ -55,6 +56,8 @@
 <list_items> ::=  <list_items>,int| int # 1,2,3,4,5,7,9
 <sb_open>::= [
 <sb_close> ::= ]
+<array_term> ::= <var>.length<lp><rp> | <var>.get<lp><integer><rp>
+<array_stmt> ::= <var>.<array_properties><end_stmt>
 
 <assign_stmt> ::= <var> <op_assign> <arithmetic_expr> 
                 |<list_assignment>
@@ -62,7 +65,7 @@
 <factor> ::= <factor> <op_muldiv> <mod_term> |<mod_term> 
 <mod_term> ::= <mod_term> <op_mod> <expo_term> | <expo_term>
 <expo_term> ::= <expo_term> <op_expo> <term> | <lp> <arithmetic_expr> <rp> | <term>
-<term> ::= <var> | <integer> | <function_calling>
+<term> ::= <var> | <integer> | <function_calling> | <array_term>
 
 <op_logical> ::= <op_and> | <op_or>
 <op_arithmetic> ::= <op_addsub> | <op_muldiv>
