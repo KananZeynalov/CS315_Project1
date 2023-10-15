@@ -46,6 +46,7 @@
         | <while_stmt>
         | <return_stmt>
         | <comment_stmt>
+        | <function_calling_stmt>
 <while> ::= while
 <openBrace> ::= {
 <closeBrace> ::= }
@@ -76,18 +77,31 @@
     |.get<lp><integer><rp>
     |.length<lp><rp>
 <array_expr> ::= <var>.<array_properties>
-<comment>:: = <comment_init> <comment_text> <nl>
+<comment>:: = <comment_init> <comment_text>
 <comment_text>::= <string>
 <comment_init> ::= # 
-<comment_stmt> ::= <comment_init><string><nl>
 <nl> ::= \n
 
 <return_stmt> ::= return <arithmetic_expr> 
-<in_func_stmt_list> ::= <stmt_list><return_stmt> <end_stmt>| <return_stmt><end_stmt>
-<type>::= "int" | "int[]"
+<type>::= int | int[]
 <function_name> ::= <var>
 <param_list>::= <type> <var> | <type> <var> , <param_list>
-<function_declaration> ::=  function <function_name> < lp > < param_list> < rp> <openBrace> <in_func_stmt_list> <closeBrace>
+<function_declaration> ::=  function <function_name> < lp > < param_list> < rp> <openBrace> <stmt_list><return_stmt><end_stmt><closeBrace>
+<main_declaration>::= function main<lp><rp><openBrace><stmt_list><return_stmt><end_stmt><closeBrace>
+<function_calling_stmt> ::= <function_name> <lp> <param_list> <rp>
+<function_list>::= <function_declaration> <function_list> | <main_declaration>
+### the real part temize çekilmiş hali ###
+<program>::= <function_list>
+<function_list>::= <function_declaration> <function_list> | <main_declaration>
+<function_declaration> ::=  function <function_name> <lp> <param_list> <rp> <openBrace> <stmt_list> <return_stmt> <end_stmt> <closeBrace>
+<main_declaration>::= function main<lp><rp><openBrace><stmt_list><return_stmt><end_stmt><closeBrace>
+<stmt_list> ::= <stmt_list><stmt><end_stmt>|<stmt><end_stmt>
+<stmt> ::= <assign_stmt>
+        | <if_stmt>  # should be changed 
+        | <loop_stmt>
+        | <funct_tmt>
+        | <while_stmt>
+        | <return_stmt>
+        | <comment_stmt>
+        | <function_calling_stmt>
 
-<function_calling> ::= <function_name> <lp> <param_list> <rp>
-###
