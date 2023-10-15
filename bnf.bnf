@@ -38,7 +38,7 @@
 <if> ::= if
 <else> ::= else 
 <logical_expr> ::= <logical_expr> <op_logical> <compare> | <compare>
-
+<compare> ::= <arithmetic_expr> <op_logical> <term>
 <output_stmt> ::= <cout> <outSymbol> <arithmetic_expr>
                     |<cout> <outSymbol> <string>
 <input_stmt> ::= <cin><inSymbol><var>

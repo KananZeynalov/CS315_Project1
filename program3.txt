@@ -1,0 +1,27 @@
+#"This program will implement binary search"
+#"It will write an array with size of 6 by getting the integer items from user"
+
+func mergeSort(int[] arr, int key){
+    end= arr.length()-1;
+    return mergeSortHelper(arr, 0, end, key);+
+}
+func mergeSortHelper(int[] arr, int start, int end, int key){
+    if(end<start){
+        return -1;
+    }
+    mid= (end + start)/2;
+    if(mid== key){
+        return mid;
+    }
+    leftValue = mergeSortHelper(arr, start, mid, key);
+    if(leftValue>=0){
+        return leftValue;
+    }
+    rightValue = mergeSortHelper(arr,mid, end, key);
+    return rightValue; #"since only choice is rightValue it will be returned"
+}
+func main(){
+    arr1[] = [1,4,6,12,57,31];
+    foundIndex = mergeSort(arr1[], 12);
+    cout<<foundIndex;
+}
