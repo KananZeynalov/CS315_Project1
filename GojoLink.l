@@ -11,10 +11,14 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 \+			{printf("%s", "OP_ADD " );} 
 -              		{printf("%s", "OP_SUB " );} 
 \*              	{printf("%s", "OP_MUL " );} 
+\*\*                {printf("%s", "OP_EXPO);}
+\%                  {printf("%s", "OP_MOD");}
 \/              	{printf("%s", "OP_DIV" );} 
 \(              	{printf("%s", "LP ");}
 \)              	{printf("%s", "RP ");}
-\;               	{printf("%s", "SC ");}
+\;               	{printf("%s", "END_STMT ");}
+\[                  {printf("%s", "SBO")}
+\]                  {printf("%s", "SBC")}
 \=               	{printf("%s", "OP_ASSIGN ");}
 \{               	{printf("%s", "OpenBrace ");} /* for now taking as string i think*/
 \}               	{printf("%s", "CloseBrace ");}
