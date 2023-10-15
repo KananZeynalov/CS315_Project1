@@ -24,4 +24,5 @@ func main(){
     arr1[] = [1,4,6,12,57,31];
     foundIndex = mergeSort(arr1[], 12);
     cout<<foundIndex;
+    return 0;
 }

@@ -14,4 +14,5 @@ func main(){
     while(x>0 || y>0 || z>0){ #"loop statement"
         cout<< x*y*z
     }
+    return 0;
 }

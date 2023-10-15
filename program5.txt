@@ -1,0 +1,18 @@
+#"fibonacci"
+
+func fibo(int n){
+    if(n==0 | n==1){
+        return 1;
+    }
+    else{
+        return fibo(n-1);
+    }
+    return 15;#"there must be additional return statement
+    because every function ends with return"
+}
+func main(){
+    value = fibo(5);
+    cout<<"Value of the fibo(5) is";
+    cout<<value;
+    return 0;
+}

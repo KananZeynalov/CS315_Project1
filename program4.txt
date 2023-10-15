@@ -14,6 +14,5 @@ func main(){
         index = index + 1;
         cout << num; 
     }
-
-    
+    return 0;
 }

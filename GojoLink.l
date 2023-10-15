@@ -18,8 +18,8 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 \=               	{printf("%s", "OP_ASSIGN ");}
 \.                  {printf("%s", "DOT");}
 \{               	{printf("%s", "OpenBrace ");} 
-\[                  {printf("%s", "SBO");}
-\]                  {printf("%s", "SBC");}
+\[                  {printf("%s", "SBO ");}
+\]                  {printf("%s", "SBC ");}
 \}               	{printf("%s", "CloseBrace ");}
 length              {printf("%s","ARR_LENGTH");}
 get                 {printf("%s","ARR_GET");}
