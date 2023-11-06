@@ -13,8 +13,10 @@ func foo(int p, int q){
         return q;
     }
 
+
 }
 func main(){
+
 
      a[4] = [5, 0, 3, -7];
      b[3] = [9, -2, -1];
