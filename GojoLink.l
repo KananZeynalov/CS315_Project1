@@ -1,18 +1,16 @@
 /* Disabling yywrap for now to handle end of input by ourselves with ' quit' */
-
-%option noyywrap  
-
 alphabetic	[A-Za-z]
 numeric		[0-9]
 sign [+-]
 
 %%
 Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave program */
-\+			{printf("%s", "OP_ADD " );} 
--              		{printf("%s", "OP_SUB " );} 
+\+			{printf("%s", "OP_ADD " ); return OP_ADD} 
+-              		{printf("%s", "OP_SUB " );return OP_SUB;} 
 \*              	{printf("%s", "OP_MUL " );} 
 \/              	{printf("%s", "OP_DIV" );} 
 \%                  {printf("%s","OP_MOD");}
+\,                  {return COMMA}
 \*\*                {printf("%s","OP_EXPO");}
 \n                  {extern int lineno;lineno++;printf("%s","NL");}
 \(              	{printf("%s", "LP ");}

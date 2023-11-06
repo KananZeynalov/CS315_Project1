@@ -86,7 +86,6 @@ compare: arithmetic_expr OP_GT term
        | arithmetic_expr OP_LT term
        | arithmetic_expr OP_LE term
        | arithmetic_expr OP_EQ term
-       | arithmetic_expr OP_NE term
        | logical_expr OP_OR compare
        | logical_expr OP_AND compare
        ;
