@@ -21,7 +21,7 @@ func mergeSortHelper(int[] arr, int start, int end, int key){
     return rightValue; #"since only choice is rightValue it will be returned"
 }
 func main(){
-    arr1[] = [1,4,6,12,57,31];
+    arr1[5] = [1,4,6,12,57,31];
     foundIndex = mergeSort(arr1[], 12);
     cout<<foundIndex;
     return 0;

@@ -26,7 +26,7 @@ func main(){
      index2 = 0;
 
 
-    while(size > index){
+    while(size > index1){
         while(size2 > index2){
 
             temp1 = a.get(index1);
