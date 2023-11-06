@@ -11,7 +11,7 @@
 
 %left OP_ADD OP_SUB
 %left OP_MUL OP_DIV OP_MOD
-%left OP_EXPO
+%right OP_EXPO
 %nonassoc UMINUS
 %%
 program: function_list {printf("Gojo: program is working");}
@@ -46,8 +46,41 @@ stmt:
 
 return_stmt:
     return arithmetic_expr
+    ;
 function_calling_stmt:
-    VAR LP 
+     FUNCTION LP var_list rp 
+    | FUNCTION LP RP
+    ;
+
+var_list: 
+    arithmetic_expr COMMA var_list
+    | VAR SBO SBC var_list
+    | arithmetic_expr 
+    | VAR SBO SBC
+    ;
+
+input_stmt:
+   INPUT OP_INPUT VAR SC
+   ;
+
+output_stmt:
+      OUTPUT OP_OUTPUT arithmetic_expr
+    | OUTPUT OP_OUTPUT STRING
+    ;
+return_stmt:
+    RETURN arithmetic_expr
+    ;
+
+array_stmt:
+    VAR DOT array_properties SC
+    ;
+
+array_properties:
+    COMMA LP INT COMMA INT RP
+    | COMMA ARR_LENGTH LP RP
+    | COMMA ARR_GET LP INT RP
+    ;
+
 %%
 int main(){
     yyparse();
