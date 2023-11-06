@@ -2,6 +2,7 @@
 <program>::= <function_list>
 <function_list>::= <function_declaration> <function_list> | <main_declaration>
 <function_declaration> ::=  function <function_name> <lp> <param_list> <rp> <openBrace> <stmt_list> <return_stmt> <end_stmt> <closeBrace>
+    | 
 <main_declaration>::= function main<lp><rp><openBrace><stmt_list><return_stmt><end_stmt><closeBrace>
 <stmt_list> ::= <stmt_list><stmt><end_stmt>|<stmt><end_stmt>
 <stmt> ::= <assign_stmt>
@@ -49,12 +50,12 @@
 <string> ::= <char> <string> | <digit> <string> | " " <string> 
 <string_literal> ::= "\"" <string> "\""
 
-<list_assignment> ::= <var><sb_open><integer><sb_close><op_assign> <list> #arr[3] = [11,13,03]
+<list_assignment> ::= <var><sb_open><arithmetic_expr><sb_close><op_assign> <list> | <var><sb_open><arithmetic_expr><sb_close>
 <array_expr> ::= <var>.<array_properties>
 <array_properties> ::= .assign<lp><integer>,<integer><rp>
     |.length<lp><rp>
     |.get<lp><integer><rp>
-<list> ::= <sb_open> list_items <sb_close> # [1,2,4,7,8]
+<list> ::= <sb_open> list_items <sb_close> # list[n];
 <list_items> ::=  <list_items>,int| int # 1,2,3,4,5,7,9
 <sb_open>::= [
 <sb_close> ::= ]
