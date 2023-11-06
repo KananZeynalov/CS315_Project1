@@ -33,6 +33,9 @@ logical_expr:
     term OP_LE term
     | term OP_GE term
     | term OP_LT term
+    | term OP_EQ term
+    | logical_expr OP_AND logical_expr
+    | logical_expr OP_OR logical_expr
 term:
     INT
     | VAR

@@ -24,7 +24,7 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 \}               	{printf("%s", "CloseBrace "); return CloseBrace;}
 length              {printf("%s","ARR_LENGTH"); return ARR_LENGTH;}
 get                 {printf("%s","ARR_GET"); return ARR_GET;}
-assign              {printf("%s","ARR_ASSIGN "); return ARR_ASSIGN;}
+set           {printf("%s","ARR_ASSIGN "); return ARR_SET;}
 main			{printf("%s","MAIN "); return MAIN;} /*starting of the program. Inside this function will be executed just like C*/
 func		{printf("%s", "FUNCTION "); return FUNCTION; } /*function declaration start token*/
 return			{printf("%s", "RETURN "); return RETURN;} /*Return token for function return stmt */
