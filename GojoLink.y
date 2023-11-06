@@ -1,6 +1,10 @@
 %{
     #include <stdio.h>
-    int lineno = 1;
+    int lineno = 0;
+    void yyerror(const char *s);
+    int yylex();
+    int valid = 1;
+
 %}
 
 %token OP_ADD OP_SUB OP_MUL OP_DIV OP_MOD OP_EXPO
@@ -35,6 +39,7 @@ param_list: type VAR COMMA param_list
     ;
 stmt_list: stmt SC stmt_list 
     | stmt SC {printf("We are in statement");}
+
     ;
 stmt:
     return_stmt
@@ -44,6 +49,7 @@ stmt:
     | input_stmt
     | output_stmt
     | array_stmt
+    error { yyerror("Invalid statement"); }
     ;
 
 return_stmt:
@@ -129,10 +135,28 @@ type:
     | ARR_TYPE
 %%
 #include "lex.yy.c"
+void yyerror(const char *s); /* this one is required by YACC */
+
+
+
+int main(){
+
+    /* while(1){*/
+        
+        yyparse();
+
+         /* if (feof(stdin)) {
+            break;  // No more input, exit the loop ; fuck this shit tuna did not work 
+        }*/
+
+        if(valid){
+            printf("Program is valid!\n");
+        }
+
+       // }
+    return 0;
+}
 void yyerror(const char *s) {
     fprintf(stderr, "Syntax error on line %d: %s\n", lineno, s);
-}
-int main(){
-    yyparse();
-    return 0;
+    valid = 0;
 }

@@ -1,3 +1,4 @@
+
 /* Disabling yywrap for now to handle end of input by ourselves with ' quit' */
 alphabetic	[A-Za-z]
 numeric		[0-9]
@@ -12,7 +13,7 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 \%                  {printf("%s","OP_MOD");return OP_MOD;}
 \,                  {return COMMA;}
 \*\*                {printf("%s","OP_EXPO"); return OP_EXPO;}
-\n                  {extern int lineno;lineno++;printf("%s","NL");}
+\n      { lineno++; }
 \(              	{printf("%s", "LP "); return LP;}
 \)              	{printf("%s", "RP "); return RP;}
 \;               	{printf("%s", "SC "); return SC;}
@@ -51,5 +52,6 @@ int\[\]		    	{printf("%s","ARR_TYPE "); return ARR_TYPE;}
 .		;
 
 %%
-int yywrap(){return 1;}
+
+int yywrap(){return 1;} 
 
