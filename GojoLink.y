@@ -10,6 +10,11 @@
 %token IF ELSE COMMENT_INIT OP_GT OP_GE OP_LT OP_LE OP_AND OP_OR WHILE OP_EQ
 %token INT_TYPE ARR_TYPE INT STRING VAR COMMA
 
+%left OP_LT OP_LE OP_GT OP_GE
+%left OP_EQ
+%left OP_AND
+%left OP_OR
+
 %left OP_ADD OP_SUB
 %left OP_MUL OP_DIV OP_MOD
 %right OP_EXPO
@@ -63,9 +68,6 @@ input_stmt:
 output_stmt:
       OUTPUT OP_OUTPUT arithmetic_expr
     | OUTPUT OP_OUTPUT STRING
-    ;
-return_stmt:
-    RETURN arithmetic_expr
     ;
 
 array_stmt:
