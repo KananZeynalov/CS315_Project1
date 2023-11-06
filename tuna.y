@@ -42,7 +42,7 @@ stmt_list: stmt stmt_list
          | stmt
          ;
 
-stmt: assign_stmt
+stmt: "assign_stmt
     | if_stmt
     | function_calling_stmt
     | while_stmt
@@ -52,7 +52,7 @@ stmt: assign_stmt
     | comment_stmt
     | function_calling_stmt
     | array_stmt
-    ;
+    ;"
 
 return_stmt: RETURN arithmetic_expr SC
            ;
