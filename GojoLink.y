@@ -1,12 +1,13 @@
 %{
-    #include "stdio.h"
+    #include <stdio.h>
+    int lineno = 1;
 %}
-%%
+
 %token OP_ADD OP_SUB OP_MUL OP_DIV OP_MOD OP_EXPO
 %token LP RP SC OP_ASSIGN DOT OpenBrace SBO SBC CloseBrace
 %token ARR_LENGTH ARR_GET ARR_SET
 %token MAIN FUNCTION RETURN OUTPUT OP_INPUT OP_OUTPUT INPUT
-%token IF ELSE COMMENT_INIT OP_GT OP_GE OP_LT OP_LE OP_AND OP_OR WHILE
+%token IF ELSE COMMENT_INIT OP_GT OP_GE OP_LT OP_LE OP_AND OP_OR WHILE OP_EQ
 %token INT_TYPE ARR_TYPE INT STRING VAR COMMA
 
 %left OP_ADD OP_SUB
@@ -16,7 +17,7 @@
 %%
 program: function_list {printf("Gojo: program is working");}
     ;
-funciton_list: function_declaration NL function_list
+function_list: function_declaration function_list
     | main_declaration {printf("we are in the main");}
     ;
 function_declaration: FUNCTION LP param_list RP OpenBrace stmt_list CloseBrace
@@ -29,26 +30,22 @@ param_list: type VAR COMMA param_list
     ;
 stmt_list: stmt SC stmt_list 
     | stmt SC {printf("We are in statement");}
-    |NL
     ;
 stmt:
     return_stmt
-    | function_calling_stmt
     | while_stmt
     | assign_stmt
     | if_stmt
     | input_stmt
     | output_stmt
-    | comment_stmt
-    | function_calling_stmt
     | array_stmt
     ;
 
 return_stmt:
-    return arithmetic_expr
+    RETURN arithmetic_expr
     ;
 function_calling:
-     FUNCTION LP var_list rp 
+     FUNCTION LP var_list RP
     | FUNCTION LP RP
     ;
 
@@ -84,7 +81,7 @@ while_stmt:WHILE LP logical_expr RP OpenBrace stmt_list CloseBrace
 if_stmt:
     IF LP logical_expr RP OpenBrace stmt_list CloseBrace
     | IF LP logical_expr RP OpenBrace stmt_list CloseBrace ELSE OpenBrace stmt_list CloseBrace
-
+    ;
 assign_stmt:
     VAR OP_ASSIGN arithmetic_expr 
     | list_assignment
@@ -122,10 +119,17 @@ term:
     | array_term
     | function_calling
     ;
+array_term:
+    VAR array_properties
+    ;
 type:
     INT_TYPE
     | ARR_TYPE
 %%
+#include "lex.yy.c"
+void yyerror(const char *s) {
+    fprintf(stderr, "Syntax error on line %d: %s\n", lineno, s);
+}
 int main(){
     yyparse();
     return 0;

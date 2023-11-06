@@ -1,7 +1,7 @@
 runnable.out:y.tab.c lex.yy.c
 	gcc -o GojoLink.out y.tab.c
-y.tab.c: tuna.y
-	yacc tuna.y
+y.tab.c: GojoLink.y
+	yacc GojoLink.y
 lex.yy.c: GojoLink.l
 	lex GojoLink.l
 clean:

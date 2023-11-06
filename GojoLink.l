@@ -16,7 +16,7 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 \(              	{printf("%s", "LP "); return LP;}
 \)              	{printf("%s", "RP "); return RP;}
 \;               	{printf("%s", "SC "); return SC;}
-\=               	{printf("%s", "OP_ASSIGN ") return OP_ASSIGN;}
+\=               	{printf("%s", "OP_ASSIGN ");return OP_ASSIGN;}
 \.                  {printf("%s", "DOT"); return DOT;}
 \{               	{printf("%s", "OpenBrace "); return OpenBrace;} 
 \[                  {printf("%s", "SBO "); return SBO;}
@@ -41,6 +41,7 @@ else            	{printf("%s", "ELSE "); return ELSE;}
 \<\=              	{printf("%s", "OP_LE "); return OP_LE;} 
 \&\&              	{printf("%s", "OP_AND "); return OP_AND;}
 \|\|              	{printf("%s", "OP_OR "); return OP_OR;}
+\=\=                {printf("%s", "OP_EQ "); return OP_EQ;}
 while           	{printf("%s", "WHILE "); return WHILE;}
 int			{printf("%s","INT_TYPE"); return INT_TYPE;}
 int\[\]		    	{printf("%s","ARR_TYPE "); return ARR_TYPE;}
@@ -51,3 +52,4 @@ int\[\]		    	{printf("%s","ARR_TYPE "); return ARR_TYPE;}
 
 %%
 int yywrap(){return 1;}
+
