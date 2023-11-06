@@ -12,6 +12,9 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 -              		{printf("%s", "OP_SUB " );} 
 \*              	{printf("%s", "OP_MUL " );} 
 \/              	{printf("%s", "OP_DIV" );} 
+\%                  {printf("%s","OP_MOD");}
+\*\*                {printf("%s","OP_EXPO");}
+\n                  {extern int lineno;printf("%s","NL");}
 \(              	{printf("%s", "LP ");}
 \)              	{printf("%s", "RP ");}
 \;               	{printf("%s", "SC ");}
@@ -23,7 +26,7 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 \}               	{printf("%s", "CloseBrace ");}
 length              {printf("%s","ARR_LENGTH");}
 get                 {printf("%s","ARR_GET");}
-OP_ASSIGN           {printf("%s", "ARR_ASSIGN ");}
+/*OP_ASSIGN           {printf("%s", "ARR_ASSIGN ");} bu ne?
 main			{printf("%s","MAIN ");} /*starting of the program. Inside this function will be executed just like C*/
 func		{printf("%s", "FUNCTION ");} /*function declaration start token*/
 return			{printf("%s", "RETURN ");} /*Return token for function return stmt */
@@ -49,7 +52,4 @@ int\[\]		    	{printf("%s","ARR_TYPE ");}
 .		;
 
 %%
-int main(){
-    yylex();
-    return 0;
-}
+int yywrap(){return 1;}
