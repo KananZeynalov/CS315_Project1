@@ -1,6 +1,6 @@
 %{
     #include <stdio.h>
-    int lineno = 0;
+    int lineno = 1;
     void yyerror(const char *s);
     int yylex();
     int valid = 1;
