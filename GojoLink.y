@@ -74,8 +74,9 @@ input_stmt:
    ;
 
 output_stmt:
-      OUTPUT OP_OUTPUT arithmetic_expr
-    | OUTPUT OP_OUTPUT STRING
+    
+     OUTPUT OP_OUTPUT STRING SC
+    | OUTPUT OP_OUTPUT arithmetic_expr SC
     ;
 
 array_stmt:

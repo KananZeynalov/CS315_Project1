@@ -3,12 +3,15 @@
 #"3. if any of them is zero, ask the user to enter only non-zero values"
 #"4. keep reading new values until proper values are entered."
 #"5. display the value of the expression (x times y times z)"
+
+
 func main(){
-    x = 0;#"variables must be initialized"
+    x = 0; 
     y = 0;
     z = 0;
-    cout<<"Enter the value of x, y and z"; #"inputs will be read";
-    cin>>x;
+    cout << "Enter the value of x, y and z";
+
+    cin >> x;
     cin>>y;
     cin>>z;
     #"while(x>0 || y>0 || z>0){
