@@ -30,8 +30,8 @@ main			{printf("%s","MAIN "); return MAIN;} /*starting of the program. Inside th
 func		{printf("%s", "FUNCTION "); return FUNCTION; } /*function declaration start token*/
 return			{printf("%s", "RETURN "); return RETURN;} /*Return token for function return stmt */
 cout			{printf("%s","OUTPUT "); return OUTPUT;}
-\>\>            {printf("%s","OP_OUTPUT"); return OP_OUTPUT;}
-\<\<            {printf("%s","OP_INPUT"); return OP_INPUT;}
+\>\>            {printf("%s","OP_INPUT"); return OP_INPUT;}
+\<\<            {printf("%s","OP_OUTPUT"); return OP_OUTPUT;}
 cin			{printf("%s","INPUT"); return INPUT;}
 if              	{printf("%s", "IF "); return IF;}
 else            	{printf("%s", "ELSE "); return ELSE;}
