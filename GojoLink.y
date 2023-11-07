@@ -12,7 +12,7 @@
 %token ARR_LENGTH ARR_GET ARR_SET
 %token MAIN FUNCTION RETURN OUTPUT OP_INPUT OP_OUTPUT INPUT
 %token IF ELSE OP_GT OP_GE OP_LT OP_LE OP_AND OP_OR WHILE OP_EQ
-%token INT_TYPE ARR_TYPE INT STRING VAR COMMA
+%token INT_TYPE ARR_TYPE INT STRING VAR COMMA COLON
 
 %left OP_LT OP_LE OP_GT OP_GE
 %left OP_EQ
@@ -79,15 +79,7 @@ output_stmt:
     ;
 
 array_stmt:
-    VAR array_properties
-    ;
-array_properties:
-        DOT ARR_SET LP arithmetic_expr COMMA arithmetic_expr RP
-    /* DOT ARR_SET LP arithmetic_expr COMMA arithmetic_expr RP */
-       /* total.set(index, a.get(index) + b.get(index)); */
-    | DOT ARR_LENGTH LP RP
-    | DOT ARR_GET LP arithmetic_expr RP
-    ; 
+    VAR COLON COLON arithmetic_expr OP_ASSIGN arithmetic_expr
 while_stmt:WHILE LP logical_expr RP OpenBrace stmt_list CloseBrace
     ;
 if_stmt:
@@ -128,12 +120,15 @@ logical_expr:
 term:
     INT
     | VAR
-     | array_term 
+    | array_get
+    | array_length
     | function_calling
     ;
-array_term:
-    VAR array_properties {printf("Reduced to array_term");} 
+array_get:
+    LP VAR COLON arithmetic_expr RP 
     ;
+array_length:
+    VAR COLON COLON
 type:
     INT_TYPE
     | ARR_TYPE

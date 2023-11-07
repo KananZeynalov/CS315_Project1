@@ -49,16 +49,16 @@
 <string_literal> ::= "\"" <string> "\""
 
 <list_assignment> ::= <var><sb_open><integer><sb_close><op_assign> <list>
-<array_expr> ::= <var>.<array_properties>
-<array_properties> ::= .set<lp><integer>,<integer><rp>
-    |.length<lp><rp>
-    |.get<lp><integer><rp>
+<array_expr> ::= <array_length> | <array_get> | <array_set>
+<array_length> ::= <var>::
+<array_get> ::= <lp> <var>:<arithmetic_expr> <rp>
+<array_set> ::= <var><arithmetic_expr> = <arithmetic_expr>
 <list> ::= <sb_open> list_items <sb_close>
 <list_items> ::=  <list_items>,int| int
 <sb_open>::= [
 <sb_close> ::= ]
 <array_term> ::= <var>.length<lp><rp> | <var>.get<lp><integer><rp>
-<array_stmt> ::= <var>.<array_properties><end_stmt>
+<array_stmt> ::= <array_expr> <end_stmt>
 
 <assign_stmt> ::= <var> <op_assign> <arithmetic_expr> 
                 |<list_assignment>

@@ -18,7 +18,7 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 \)              	{printf("%s", "RP "); return RP;}
 \;               	{printf("%s", "SC "); return SC;}
 \=               	{printf("%s", "OP_ASSIGN ");return OP_ASSIGN;}
-\.                  {printf("%s", "DOT"); return DOT;}
+\:                  {printf("%s", "DOT"); return COLON;}
 \{               	{printf("%s", "OpenBrace "); return OpenBrace;} 
 \[                  {printf("%s", "SBO "); return SBO;}
 \]                  {printf("%s", "SBC "); return SBC;}
