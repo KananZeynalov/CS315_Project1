@@ -11,7 +11,7 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 \*              	{printf("%s", "OP_MUL " );return OP_MUL;} 
 \/              	{printf("%s", "OP_DIV" );return OP_DIV;} 
 \%                  {printf("%s","OP_MOD");return OP_MOD;}
-\,                  {return COMMA;}
+\,                  {printf("%s", "COMMA"); return COMMA;}
 \*\*                {printf("%s","OP_EXPO"); return OP_EXPO;}
 \n                  {printf("\n");lineno++;}
 \(              	{printf("%s", "LP "); return LP;}

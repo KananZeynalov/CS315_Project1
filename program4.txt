@@ -13,7 +13,7 @@ func main(){
     index = 0;
 
     
-    total.set(index, a.get(index) + b.get(index));
+    c = total.set(index, a.get(index));
 
 
     

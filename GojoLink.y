@@ -46,7 +46,7 @@ stmt:
     | while_stmt
     | assign_stmt
     | if_stmt
-    | input_stmt {printf("Input Stmt found!")}
+    | input_stmt {printf("Input Stmt found!");}
     | output_stmt
     | array_stmt
     error { yyerror("Invalid statement"); }
@@ -80,7 +80,9 @@ array_stmt:
     VAR array_properties
     ;
 array_properties:
-    DOT ARR_SET LP arithmetic_expr COMMA arithmetic_expr RP
+        DOT ARR_SET LP arithmetic_expr COMMA arithmetic_expr RP
+    /* DOT ARR_SET LP arithmetic_expr COMMA arithmetic_expr RP */
+       /* total.set(index, a.get(index) + b.get(index)); */
     | DOT ARR_LENGTH LP RP
     | DOT ARR_GET LP arithmetic_expr RP
     ;
