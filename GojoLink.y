@@ -11,7 +11,7 @@
 %token LP RP SC OP_ASSIGN DOT OpenBrace SBO SBC CloseBrace
 %token ARR_LENGTH ARR_GET ARR_SET
 %token MAIN FUNCTION RETURN OUTPUT OP_INPUT OP_OUTPUT INPUT
-%token IF ELSE COMMENT_INIT OP_GT OP_GE OP_LT OP_LE OP_AND OP_OR WHILE OP_EQ
+%token IF ELSE OP_GT OP_GE OP_LT OP_LE OP_AND OP_OR WHILE OP_EQ
 %token INT_TYPE ARR_TYPE INT STRING VAR COMMA
 
 %left OP_LT OP_LE OP_GT OP_GE
@@ -46,7 +46,7 @@ stmt:
     | while_stmt
     | assign_stmt
     | if_stmt
-    | input_stmt
+    | input_stmt {printf("Input Stmt found!");}
     | output_stmt
     | array_stmt
     error { yyerror("Invalid statement"); }
@@ -68,7 +68,7 @@ var_list:
     ;
 
 input_stmt:
-   INPUT OP_INPUT VAR SC
+   INPUT OP_INPUT VAR
    ;
 
 output_stmt:

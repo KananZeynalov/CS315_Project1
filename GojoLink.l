@@ -13,7 +13,7 @@ Q			{printf("\n"); return 0;} /* All version of the ' quit ' accepted to leave p
 \%                  {printf("%s","OP_MOD");return OP_MOD;}
 \,                  {return COMMA;}
 \*\*                {printf("%s","OP_EXPO"); return OP_EXPO;}
-\n      { lineno++; }
+\n                  {printf("\n");lineno++;}
 \(              	{printf("%s", "LP "); return LP;}
 \)              	{printf("%s", "RP "); return RP;}
 \;               	{printf("%s", "SC "); return SC;}
@@ -35,7 +35,7 @@ cout			{printf("%s","OUTPUT "); return OUTPUT;}
 cin			{printf("%s","INPUT"); return INPUT;}
 if              	{printf("%s", "IF "); return IF;}
 else            	{printf("%s", "ELSE "); return ELSE;}
-\#			{printf("%s","COMMENT_INIT "); return COMMENT_INIT;}
+\#\"({alphabetic}|.)*\"	    {printf("%s","COMMENT");}
 \>               	{printf("%s", "OP_GT "); return OP_GT;}
 \>\=              	{printf("%s", "OP_GE "); return OP_GE;}  /* print statements can be changed */
 \<               	{printf("%s", "OP_LT "); return OP_LT;}

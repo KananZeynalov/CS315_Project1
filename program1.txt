@@ -7,12 +7,12 @@ func main(){
     x = 0;#"variables must be initialized"
     y = 0;
     z = 0;
-    cout<<"Enter the value of x, y and z"; #"inputs will be read"
+    cout<<"Enter the value of x, y and z"; #"inputs will be read";
     cin>>x;
     cin>>y;
     cin>>z;
-    while(x>0 || y>0 || z>0){ #"loop statement"
+    #"while(x>0 || y>0 || z>0){
         cout<< x*y*z
-    }
-    return 0;
+    }"
+    #"return 0;"
 }
