@@ -46,7 +46,7 @@ stmt:
     | while_stmt
     | assign_stmt
     | if_stmt
-    | input_stmt {printf("Input Stmt found!");}
+    | input_stmt {printf("Input Stmt found!")}
     | output_stmt
     | array_stmt
     error { yyerror("Invalid statement"); }
