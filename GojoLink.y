@@ -39,16 +39,16 @@ param_list: type VAR COMMA param_list
     ;
 stmt_list: stmt SC stmt_list 
     | stmt SC {printf("We are in statement");}
-
     ;
 stmt:
     return_stmt
     | while_stmt
     | assign_stmt
+    | function_calling
     | if_stmt
     | input_stmt {printf("Input Stmt found!");}
     | output_stmt
-    | array_stmt
+    /* | array_stmt */
     error { yyerror("Invalid statement"); }
     ;
 
@@ -56,12 +56,14 @@ return_stmt:
     RETURN arithmetic_expr
     ;
 function_calling:
-     FUNCTION LP var_list RP
-    | FUNCTION LP RP
+     VAR LP var_list RP {printf("Function called");}
+    | VAR LP RP
+    | VAR DOT VAR LP var_list RP {printf("Function called");}
+    | VAR DOT VAR LP RP
     ;
 
 var_list: 
-    arithmetic_expr COMMA var_list
+    arithmetic_expr COMMA var_list {printf("Variable list\n");}
     | VAR SBO SBC var_list
     | arithmetic_expr 
     | VAR SBO SBC
@@ -85,7 +87,7 @@ array_properties:
        /* total.set(index, a.get(index) + b.get(index)); */
     | DOT ARR_LENGTH LP RP
     | DOT ARR_GET LP arithmetic_expr RP
-    ;
+    ; */
 while_stmt:WHILE LP logical_expr RP OpenBrace stmt_list CloseBrace
     ;
 if_stmt:
@@ -108,7 +110,7 @@ list_items: list_items COMMA INT
 
 arithmetic_expr:
     term
-    | arithmetic_expr OP_ADD arithmetic_expr
+    | arithmetic_expr OP_ADD arithmetic_expr {printf("Operation add is performed\n");}
     | arithmetic_expr OP_SUB arithmetic_expr
     | arithmetic_expr OP_MUL arithmetic_expr
     | arithmetic_expr OP_DIV arithmetic_expr
@@ -126,11 +128,11 @@ logical_expr:
 term:
     INT
     | VAR
-    | array_term
+    /* | array_term */
     | function_calling
     ;
-array_term:
-    VAR array_properties
+/* array_term:
+    VAR array_properties {printf("Reduced to array_term");} */
     ;
 type:
     INT_TYPE
