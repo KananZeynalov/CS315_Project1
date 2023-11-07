@@ -48,7 +48,7 @@ stmt:
     | if_stmt
     | input_stmt {printf("Input Stmt found!");}
     | output_stmt
-    /* | array_stmt */
+    | array_stmt 
     error { yyerror("Invalid statement"); }
     ;
 
@@ -87,7 +87,7 @@ array_properties:
        /* total.set(index, a.get(index) + b.get(index)); */
     | DOT ARR_LENGTH LP RP
     | DOT ARR_GET LP arithmetic_expr RP
-    ; */
+    ; 
 while_stmt:WHILE LP logical_expr RP OpenBrace stmt_list CloseBrace
     ;
 if_stmt:
@@ -128,11 +128,11 @@ logical_expr:
 term:
     INT
     | VAR
-    /* | array_term */
+     | array_term 
     | function_calling
     ;
-/* array_term:
-    VAR array_properties {printf("Reduced to array_term");} */
+array_term:
+    VAR array_properties {printf("Reduced to array_term");} 
     ;
 type:
     INT_TYPE
