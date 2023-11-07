@@ -4,14 +4,20 @@ func main(){
     b[5] = [10, 10, 10, 10];
     total[5] = [0, 0, 0, 0, 0];
 
+
+
+    
+
     sizeA = a.length();
     sizeB = b.length();
     index = 0;
 
+    
     total.set(index, a.get(index) + b.get(index));
-    num = total[index]
+    num = total.get(index);
     index = index + 1;
     cout << num; 
+    cin >> index;
     
     return 0;
 }
