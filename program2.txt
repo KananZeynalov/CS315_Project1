@@ -2,26 +2,26 @@ func foo(int p, int q){
 
     cout << "Function Name: foo";
     cout << "Parameter p: ";
-    cout << p <<;
+    cout << p;
     cout << "Parameter q: ";
-    cout << q <<;
+    cout << q;
 
     if(p > q) {
         return p;
     }
     else{
         return q;
-    }
+    };
 
 
 }
 func main(){
 
 
-     a[4] = [5, 0, 3, -7];
-     b[3] = [9, -2, -1];
-     size = a.length(); 
-     size2 = b.length();
+     a[4] = [5, 0, 3, 7];
+     b[3] = [9, 2, 1];
+     size = a::; 
+     size2 = b::;
      index1 = 0;
      index2 = 0;
 
@@ -29,16 +29,16 @@ func main(){
     while(size > index1){
         while(size2 > index2){
 
-            temp1 = a.get(index1);
-            temp2 = b.get(index2);
+            temp1 = (a:index1);
+            temp2 = (b:index2);
             c = foo(a, b);
-            cout << temp1 <<;
-            cout << temp2 <<;
-            cout << c <<;
+            cout << temp1;
+            cout << temp2;
+            cout << c;
             index = index + 1;
-        }
+        };
         index1 = index1 + 1;
         index2 = 0;
-    }
+    };
     return 0;
 }

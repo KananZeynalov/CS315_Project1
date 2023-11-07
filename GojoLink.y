@@ -4,33 +4,33 @@
     void yyerror(const char *s);
     int yylex();
     int valid = 1;
-
+    int yydebug = 1;
 %}
 
 %token OP_ADD OP_SUB OP_MUL OP_DIV OP_MOD OP_EXPO
-%token LP RP SC OP_ASSIGN DOT OpenBrace SBO SBC CloseBrace
+%token LP RP OP_ASSIGN DOT OpenBrace SBO SBC CloseBrace
 %token ARR_LENGTH ARR_GET ARR_SET
-%token MAIN FUNCTION RETURN OUTPUT OP_INPUT OP_OUTPUT INPUT
+%token MAIN FUNCTION RETURN OUTPUT INPUT
 %token IF ELSE OP_GT OP_GE OP_LT OP_LE OP_AND OP_OR WHILE OP_EQ
 %token INT_TYPE ARR_TYPE INT STRING VAR COMMA COLON
 
 %left OP_LT OP_LE OP_GT OP_GE
 %left OP_EQ
 %left OP_AND
-%left OP_OR
+%left OP_OR SC
 
 %left OP_ADD OP_SUB
 %left OP_MUL OP_DIV OP_MOD
 %right OP_EXPO
-%nonassoc UMINUS
+%nonassoc UMINUS OP_OUTPUT OP_INPUT
 %%
 program: function_list {printf("Gojo: program is working");}
     ;
 function_list: function_declaration function_list
     | main_declaration {printf("we are in the main");}
     ;
-function_declaration: FUNCTION LP param_list RP OpenBrace stmt_list CloseBrace
-    | FUNCTION LP RP OpenBrace stmt_list CloseBrace
+function_declaration: FUNCTION VAR LP param_list RP OpenBrace stmt_list CloseBrace
+    | FUNCTION VAR LP RP OpenBrace stmt_list CloseBrace
     ;
 main_declaration: FUNCTION MAIN LP RP OpenBrace stmt_list CloseBrace
 
@@ -39,6 +39,15 @@ param_list: type VAR COMMA param_list
     ;
 stmt_list: stmt SC stmt_list 
     | stmt SC {printf("We are in statement");}
+    ;
+input_stmt:
+   INPUT OP_INPUT VAR
+   ;
+
+output_stmt:
+    
+     OUTPUT OP_OUTPUT STRING 
+    | OUTPUT OP_OUTPUT arithmetic_expr
     ;
 stmt:
     return_stmt
@@ -49,7 +58,7 @@ stmt:
     | if_stmt
     | input_stmt {printf("Input Stmt found!");}
     | output_stmt
-    error { yyerror("Invalid statement"); }
+    // error { yyerror("Invalid statement"); }
     ;
 
 return_stmt:
@@ -58,26 +67,15 @@ return_stmt:
 function_calling:
      VAR LP var_list RP {printf("Function called");}
     | VAR LP RP
-    | VAR DOT VAR LP var_list RP {printf("Function called");}
-    | VAR DOT VAR LP RP
     ;
 
 var_list: 
     arithmetic_expr COMMA var_list {printf("Variable list\n");}
-    | VAR SBO SBC var_list
+    | VAR SBO SBC COMMA var_list
     | arithmetic_expr 
     | VAR SBO SBC
     ;
 
-input_stmt:
-   INPUT OP_INPUT VAR
-   ;
-
-output_stmt:
-    
-     OUTPUT OP_OUTPUT STRING SC
-    | OUTPUT OP_OUTPUT arithmetic_expr SC
-    ;
 
 array_stmt:
     VAR COLON COLON arithmetic_expr OP_ASSIGN arithmetic_expr
@@ -109,11 +107,13 @@ arithmetic_expr:
     | arithmetic_expr OP_DIV arithmetic_expr
     | arithmetic_expr OP_MOD arithmetic_expr
     | arithmetic_expr OP_EXPO arithmetic_expr 
+    | OP_SUB arithmetic_expr
     | LP arithmetic_expr RP
     ; 
 logical_expr:
     term OP_LE term
     | term OP_GE term
+    | term OP_GT term
     | term OP_LT term
     | term OP_EQ term
     | logical_expr OP_AND logical_expr

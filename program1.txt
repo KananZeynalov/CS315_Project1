@@ -14,8 +14,8 @@ func main(){
     cin >> x;
     cin>>y;
     cin>>z;
-    #"while(x>0 || y>0 || z>0){
-        cout<< x*y*z
-    }"
-    #"return 0;"
+    while(x > 0 || y>0 || z>0){
+        cout<< x*y*z;
+    };
+    return 0;
 }
