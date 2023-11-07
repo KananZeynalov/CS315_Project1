@@ -77,12 +77,12 @@ output_stmt:
     ;
 
 array_stmt:
-    VAR DOT array_properties SC
+    VAR array_properties
     ;
 array_properties:
-    DOT ARR_SET LP INT COMMA INT RP
+    DOT ARR_SET LP arithmetic_expr COMMA INT RP
     | DOT ARR_LENGTH LP RP
-    | DOT ARR_GET LP INT RP
+    | DOT ARR_GET LP arithmetic_expr RP
     ;
 while_stmt:WHILE LP logical_expr RP OpenBrace stmt_list CloseBrace
     ;

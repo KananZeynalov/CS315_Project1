@@ -8,11 +8,10 @@ func main(){
     sizeB = b.length();
     index = 0;
 
-    while(index < sizeA){
-        total[index] = a[index] + b[index];
-        num = total[index]
-        index = index + 1;
-        cout << num; 
-    };
+    total.set(index, a.get(index) + b.get(index));
+    num = total[index]
+    index = index + 1;
+    cout << num; 
+    
     return 0;
 }
