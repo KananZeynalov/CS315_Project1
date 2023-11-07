@@ -42,13 +42,13 @@ stmt_list: stmt SC stmt_list
     ;
 stmt:
     return_stmt
+    | array_stmt 
     | while_stmt
     | assign_stmt
     | function_calling
     | if_stmt
     | input_stmt {printf("Input Stmt found!");}
     | output_stmt
-    | array_stmt 
     error { yyerror("Invalid statement"); }
     ;
 
