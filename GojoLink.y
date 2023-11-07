@@ -106,7 +106,7 @@ list:
     ;
 list_items: list_items COMMA INT
           | INT
-          ;
+          ;  /* */ 
 
 arithmetic_expr:
     term
