@@ -14,6 +14,9 @@ func main(){
 
     
     total.set(index, a.get(index) + b.get(index));
+
+
+    
     num = total.get(index);
     index = index + 1;
     cout << num; 
