@@ -80,7 +80,7 @@ array_stmt:
     VAR array_properties
     ;
 array_properties:
-    DOT ARR_SET LP arithmetic_expr COMMA arithmetic_expr RP
+    DOT ARR_SET LP arithmetic_expr COMMA INT RP
     | DOT ARR_LENGTH LP RP
     | DOT ARR_GET LP arithmetic_expr RP
     ;
