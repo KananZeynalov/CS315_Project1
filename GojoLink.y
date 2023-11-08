@@ -24,10 +24,10 @@
 %right OP_EXPO
 %nonassoc UMINUS OP_OUTPUT OP_INPUT
 %%
-program: function_list {printf("Gojo: program is working");}
+program: function_list 
     ;
 function_list: function_declaration function_list
-    | main_declaration {printf("we are in the main");}
+    | main_declaration 
     ;
 function_declaration: FUNCTION VAR LP param_list RP OpenBrace stmt_list CloseBrace
     | FUNCTION VAR LP RP OpenBrace stmt_list CloseBrace
@@ -38,7 +38,7 @@ param_list: type VAR COMMA param_list
     | type VAR
     ;
 stmt_list: stmt SC stmt_list 
-    | stmt SC {printf("We are in statement");}
+    | stmt SC 
     ;
 input_stmt:
    INPUT OP_INPUT VAR
@@ -56,21 +56,20 @@ stmt:
     | assign_stmt
     | function_calling
     | if_stmt
-    | input_stmt {printf("Input Stmt found!");}
+    | input_stmt 
     | output_stmt
-    // error { yyerror("Invalid statement"); }
     ;
 
 return_stmt:
     RETURN arithmetic_expr
     ;
 function_calling:
-     VAR LP var_list RP {printf("Function called");}
+     VAR LP var_list RP
     | VAR LP RP
     ;
 
 var_list: 
-    arithmetic_expr COMMA var_list {printf("Variable list\n");}
+    arithmetic_expr COMMA var_list 
     | VAR SBO SBC COMMA var_list
     | arithmetic_expr 
     | VAR SBO SBC
@@ -101,7 +100,7 @@ list_items: list_items COMMA INT
 
 arithmetic_expr:
     term
-    | arithmetic_expr OP_ADD arithmetic_expr {printf("Operation add is performed\n");}
+    | arithmetic_expr OP_ADD arithmetic_expr 
     | arithmetic_expr OP_SUB arithmetic_expr
     | arithmetic_expr OP_MUL arithmetic_expr
     | arithmetic_expr OP_DIV arithmetic_expr
@@ -150,7 +149,7 @@ int main(){
         }*/
 
         if(valid){
-            printf("Program is valid!\n");
+            printf("\n\nProgram is valid!\n");
         }
 
        // }
