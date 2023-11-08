@@ -11,6 +11,19 @@ func main(){
     z = 0;
     cout << "Enter the value of x, y and z";
 
+    if(x>y){
+        x = 5;
+    }
+    elif(x>z){
+        y = 4;
+    }
+    elif(x>z){
+        y = 4;
+    }
+    else{
+        x = 4;
+    };
+
     cin >> x;
     cin>>y;
     cin>>z;

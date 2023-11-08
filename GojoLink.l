@@ -34,6 +34,7 @@ cout			{printf("%s","OUTPUT "); return OUTPUT;}
 \<\<            {printf("%s","OP_OUTPUT"); return OP_OUTPUT;}
 cin			{printf("%s","INPUT"); return INPUT;}
 if              	{printf("%s", "IF "); return IF;}
+elif              	{printf("%s", "ELIF"); return ELIF;}
 else            	{printf("%s", "ELSE "); return ELSE;}
 \#\"({alphabetic}|.)*\"	    {printf("%s","COMMENT");}
 \>               	{printf("%s", "OP_GT "); return OP_GT;}

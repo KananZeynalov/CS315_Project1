@@ -11,7 +11,7 @@
 %token LP RP OP_ASSIGN DOT OpenBrace SBO SBC CloseBrace
 %token ARR_LENGTH ARR_GET ARR_SET
 %token MAIN FUNCTION RETURN OUTPUT INPUT
-%token IF ELSE OP_GT OP_GE OP_LT OP_LE OP_AND OP_OR WHILE OP_EQ
+%token IF ELIF ELSE OP_GT OP_GE OP_LT OP_LE OP_AND OP_OR WHILE OP_EQ
 %token INT_TYPE ARR_TYPE INT STRING VAR COMMA COLON
 
 %left OP_LT OP_LE OP_GT OP_GE
@@ -77,13 +77,20 @@ var_list:
 
 
 array_stmt:
-    VAR COLON COLON arithmetic_expr OP_ASSIGN arithmetic_expr
+    VAR COLON COLON arithmetic_expr OP_ASSIGN arithmetic_expr;
 while_stmt:WHILE LP logical_expr RP OpenBrace stmt_list CloseBrace
     ;
 if_stmt:
-    IF LP logical_expr RP OpenBrace stmt_list CloseBrace
+    IF LP logical_expr RP OpenBrace stmt_list CloseBrace    
     | IF LP logical_expr RP OpenBrace stmt_list CloseBrace ELSE OpenBrace stmt_list CloseBrace
+    | IF LP logical_expr RP OpenBrace stmt_list CloseBrace elif_stmt
     ;
+elif_stmt:
+    ELIF LP logical_expr RP OpenBrace stmt_list CloseBrace
+    | ELIF LP logical_expr RP OpenBrace stmt_list CloseBrace elif_stmt
+    | ELIF LP logical_expr RP OpenBrace stmt_list CloseBrace ELSE OpenBrace stmt_list CloseBrace
+    ;
+
 assign_stmt:
     VAR OP_ASSIGN arithmetic_expr 
     | list_assignment
