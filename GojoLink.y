@@ -37,7 +37,7 @@ main_declaration: FUNCTION MAIN LP RP OpenBrace stmt_list CloseBrace
 param_list: type VAR COMMA param_list
     | type VAR
     ;
-stmt_list: stmt SC stmt_list 
+stmt_list: stmt SC stmt_list
     | stmt SC 
     ;
 input_stmt:

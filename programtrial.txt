@@ -1,5 +1,5 @@
 func main(){
     while(x > 0){
-        cout<< x*y*z;
+        cout<< x*y*z
     };
 }

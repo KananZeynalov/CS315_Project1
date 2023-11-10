@@ -34,8 +34,12 @@
 
 <if_stmt> ::= <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
             | <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace> <else> <openBrace> <stmt_list> <closeBrace>
+            | <if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace> <elif_stmt> <else> <openBrace> <stmt_list> <closeBrace>
 <if> ::= if
-<else> ::= else 
+<else> ::= else
+<else_if> ::= elif
+<elif_stmt> ::= <else_if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace> <elif_stmt>
+        | <else_if> <lp> <logical_expr> <rp> <openBrace> <stmt_list> <closeBrace>
 <logical_expr> ::= <logical_expr> <op_logical> <compare> | <compare>
 <compare> ::= <arithmetic_expr> <op_logical> <term>
 <output_stmt> ::= <cout> <outSymbol> <arithmetic_expr>
@@ -58,7 +62,7 @@
 <sb_open>::= [
 <sb_close> ::= ]
 <array_term> ::= <var>.length<lp><rp> | <var>.get<lp><integer><rp>
-<array_stmt> ::= <array_expr> <end_stmt>
+<array_stmt> ::= <array_expr>
 
 <assign_stmt> ::= <var> <op_assign> <arithmetic_expr> 
                 |<list_assignment>
