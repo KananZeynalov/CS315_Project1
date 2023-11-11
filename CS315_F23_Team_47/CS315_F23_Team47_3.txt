@@ -1,0 +1,29 @@
+func mergeSort(int[ arr, int key){
+    end= arr:: -1;
+    return mergeSortHelper(arr, 0, end, key);
+}
+func mergeSortHelper(int[] arr, int start, int end, int key){
+    if(end<start){
+        return -1;
+    };
+    mid= (end + start)/2;
+    if(mid = key){
+        return mid;
+    };
+    leftValue = mergeSortHelper(arr, start, mid, key);
+    if(leftValue>=0){
+        return leftValue;
+    };
+    rightValue = mergeSortHelper(arr,mid, end, key);
+    return rightValue; #"since only choice is rightValue it will be returned"
+}
+func main(){
+    arr1[5] = [1,4,6,12,57,31];
+    foundIndex = mergeSort(arr1[], 12);
+    cout<<foundIndex;
+    return 0;
+}
+#"It will write an array with size of 6 by getting the integer items from user"
+#"It has errors:"
+#"On line 1 the integer parameter must be int[] rather than int["
+#On line 10 there must be == rahther than ="

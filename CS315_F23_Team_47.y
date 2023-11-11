@@ -1,10 +1,12 @@
 %{
     #include <stdio.h>
-    int lineno = 1;
+    int lineno = 1; //line number incremented with new line char
+    int linesno = 1; // this will store the begining line of the statement (s comes from statement)
+    int stopflag = 1; // when the flag is zero increment it will increment linesno
     void yyerror(const char *s);
     int yylex();
-    int valid = 1;
-    int yydebug = 1;
+    int valid = 1; // this will determine program is valid or not.
+    int yydebug = 1; // only for debugging purposes in -YYDEBUG mode
 %}
 
 %token OP_ADD OP_SUB OP_MUL OP_DIV OP_MOD OP_EXPO
@@ -48,7 +50,7 @@ output_stmt:
     
      OUTPUT OP_OUTPUT STRING 
     | OUTPUT OP_OUTPUT arithmetic_expr
-    ;
+    ;   
 stmt:
     return_stmt
     | array_stmt 
@@ -156,13 +158,14 @@ int main(){
         }*/
 
         if(valid){
-            printf("\n\nProgram is valid!\n");
+            printf("Program is valid!\n");
         }
 
        // }
     return 0;
 }
 void yyerror(const char *s) {
-    fprintf(stderr, "Syntax error on line %d: %s\n", lineno, s);
+    fprintf(stderr, "Syntax error on line %d: %s\n",linesno,s);
     valid = 0;
+    yyerrok;
 }

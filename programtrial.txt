@@ -1,5 +1,9 @@
 func main(){
     while(x > 0){
-        cout<< x*y*z
+        cout<< x*y*z #"deneme deneme";
+        cout<<"unexpected behaviour"; #"will it work?"
+        a = 5**(2 + 12);
     };
+    a[19] = [0]; #"deneme deneme"
+    return 12;
 }

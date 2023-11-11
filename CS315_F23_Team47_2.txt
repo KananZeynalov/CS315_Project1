@@ -1,3 +1,6 @@
+#"this program consist of a function that returns the maximum value of two integers."
+#"additionally program tkaes two arrays and prints the biggest value"
+#"!! Program is valid"
 func foo(int p, int q){
 
     cout << "Function Name: foo";

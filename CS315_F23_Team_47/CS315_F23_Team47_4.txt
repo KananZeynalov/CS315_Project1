@@ -1,0 +1,21 @@
+#"allows the array operations"
+#"in line 11 it must be either b:: or b:indexValue rather than b:"
+#"in line 15 there must be total::index rather than total:index"
+func main(){
+
+    a[5] = [10, 10, 10, 10];
+    b[5] = [10, 10, 10, 10];
+    total[5] = [0, 0, 0, 0, 0];
+
+    sizeA = a::;
+    sizeB = b:;
+    index = 0;
+
+    while(index < sizeA){
+        total:index = (a:index) + (b:index);
+        num = (total:index);
+        index = index + 1;
+        cout << num; 
+    };
+    return 0;
+}
