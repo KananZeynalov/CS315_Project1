@@ -1,4 +1,5 @@
 #"fibonacci"
+#"program is valid"
 
 func fibo(int n){
     if(n==0 || n==1){
@@ -10,8 +11,9 @@ func fibo(int n){
     return 15; #"there must be additional return statement because every function ends with return"
 }
 func main(){
+    fibo();
     value = fibo(5);
-    cout<<"Value of the fibo(5) is";
-    cout<<value;
+    cout<<"Value of the fibo(5) is"; 
+    cout<<value; #"deneme"
     return 0;
 }

@@ -3,13 +3,13 @@
 #"3. if any of them is zero, ask the user to enter only non-zero values"
 #"4. keep reading new values until proper values are entered."
 #"5. display the value of the expression (x times y times z)"
-
-
+#"Program has error on line 12 for forgetting output operator <<"
+#"Program has error on line 25 for forgetting the ; after else block statement"
 func main(){
-    x = 0; 
+    x = 0;
     y = 0;
     z = 0;
-    cout << "Enter the value of x, y and z";
+    cout "Enter the value of x, y and z";
 
     if(x>y){
         x = 5;
@@ -22,7 +22,7 @@ func main(){
     }
     else{
         x = 4;
-    };
+    }
 
     cin >> x;
     cin>>y;
@@ -30,5 +30,5 @@ func main(){
     while(x > 0 || y>0 || z>0){
         cout<< x*y*z;
     };
-    return 0;
+    return 0
 }

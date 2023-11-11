@@ -1,8 +1,8 @@
 ### the real part temize çekilmiş hali ###
 <program>::= <function_list>
 <function_list>::= <function_declaration> <function_list> | <main_declaration>
-<function_declaration> ::=  function <function_name> <lp> <param_list> <rp> <openBrace> <stmt_list> <return_stmt> <end_stmt> <closeBrace>
-<main_declaration>::= function main<lp><rp><openBrace><stmt_list><return_stmt><end_stmt><closeBrace>
+<function_declaration> ::=  function <function_name> <lp> <param_list> <rp> <openBrace> <stmt_list><closeBrace>
+<main_declaration>::= function main<lp><rp><openBrace><stmt_list><closeBrace>
 <stmt_list> ::= <stmt_list><stmt><end_stmt>|<stmt><end_stmt>
 <stmt> ::= <assign_stmt>
         | <if_stmt> 
@@ -16,9 +16,10 @@
 
 <return_stmt> ::= return <arithmetic_expr> 
 
-<comment_stmt>:: = <comment_init> <comment_text>
 <comment_text>::= <string>
 <comment_init> ::= # 
+<comment_stmt>:: = <comment_init> <comment_text>
+
 
 <function_calling_stmt> ::= <function_name> <lp> <var_list> <rp>| <function_name> <lp> <rp>
 <var_list> ::= <arithmetic_expr>,<var_list>|<var>[],<var_list>|<arithmetic_expr>|<var>[]
@@ -56,7 +57,7 @@
 <array_expr> ::= <array_length> | <array_get> | <array_set>
 <array_length> ::= <var>::
 <array_get> ::= <lp> <var>:<arithmetic_expr> <rp>
-<array_set> ::= <var><arithmetic_expr> = <arithmetic_expr>
+<array_set> ::= <var>::<arithmetic_expr> = <arithmetic_expr>
 <list> ::= <sb_open> list_items <sb_close>
 <list_items> ::=  <list_items>,int| int
 <sb_open>::= [
